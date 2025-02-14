@@ -3,131 +3,423 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Love ❤️</title>
+    <title>For My Ìfẹ́ mí ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Dancing+Script&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #ffebee;
-            text-align: center;
-            padding: 20px;
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(10px, -10px) rotate(5deg); }
+            50% { transform: translate(0, -20px) rotate(0deg); }
+            75% { transform: translate(-10px, -10px) rotate(-5deg); }
+        }
+
+        @keyframes envelope-open {
+            0% { transform: scale(0.1) rotate(-10deg); opacity: 0; }
+            50% { transform: scale(1.1) rotate(5deg); opacity: 0.8; }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: linear-gradient(-45deg, #ff758c, #ff7eb3, #c792ea, #ff9cee);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            font-family: 'Playfair Display', serif;
+            overflow-x: hidden;
+            color: white;
+        }
+
         .container {
-            max-width: 500px;
-            margin: auto;
-            background: white;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            padding-top: 60px;
+        }
+
+        .title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3em;
+            text-align: center;
+            margin-bottom: 30px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: heartbeat 2s infinite;
+        }
+
+        .love-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            margin-bottom: 30px;
+            transition: transform 0.3s ease;
+        }
+
+        .love-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .love-quote {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8em;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+        }
+
+        .love-button {
+            background: linear-gradient(45deg, #ff4081, #c51162);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border-radius: 25px;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s ease;
+            font-family: 'Playfair Display', serif;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .love-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .poem {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5em;
+            line-height: 1.8;
+            margin: 20px 0;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        .poem.visible {
+            opacity: 1;
+            animation: envelope-open 1s ease forwards;
+        }
+
+        .floating-memory {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(4px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: float 6s ease-in-out infinite;
+            z-index: 10;
+        }
+
+        .floating-memory:hover {
+            transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .special-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.5);
+            background: rgba(0, 0, 0, 0.7);
             padding: 20px;
             border-radius: 15px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8em;
+            text-align: center;
+            opacity: 0;
+            transition: all 0.5s ease;
+            pointer-events: none;
+            z-index: 1000;
         }
-        .message {
-            display: none;
-            font-size: 18px;
-            padding: 15px;
-            margin-top: 10px;
-            background: #ff4081;
-            color: white;
-            border-radius: 10px;
-            transition: all 0.5s ease-in-out;
+
+        .special-message.visible {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
         }
-        .message.show {
-            display: block;
-            animation: fadeIn 0.8s ease-in-out;
+
+        .final-surprise {
+            text-align: center;
+            margin-top: 30px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1s ease;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .button {
-            display: block;
-            background: #d81b60;
-            color: white;
-            padding: 10px;
-            margin: 10px auto;
-            width: 80%;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        .button:hover {
-            background: #ad1457;
-        }
-        /* Envelope animation */
-        .envelope {
-            position: relative;
-            width: 200px;
-            height: 150px;
-            background: pink;
-            margin: 20px auto;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-        .envelope::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: red;
-            transform: translateY(-100%);
-            transition: transform 1s ease-in-out;
-        }
-        .envelope.open::before {
+
+        .final-surprise.visible {
+            opacity: 1;
             transform: translateY(0);
         }
-        .final-message {
-            display: none;
-            font-size: 18px;
-            color: white;
+
+        .final-surprise h2 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .final-surprise p {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5em;
+            line-height: 1.6;
+        }
+
+        .music-controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.2);
             padding: 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .music-controls:hover {
+            transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .heart-icon {
+            display: inline-block;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+                padding-top: 50px;
+            }
+
+            .title {
+                font-size: 2.5em;
+            }
+
+            .love-quote {
+                font-size: 1.4em;
+            }
+
+            .poem {
+                font-size: 1.3em;
+            }
+
+            .floating-memory {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2em;
+            }
+
+            .special-message {
+                font-size: 1.4em;
+                width: 80%;
+            }
+
+            .love-button {
+                padding: 12px 24px;
+                font-size: 1em;
+            }
         }
     </style>
 </head>
 <body>
-
-    <div class="container">
-        <h2>For You, My Love ❤️</h2>
-        <p>Click each button to reveal a message.</p>
-
-        <button class="button" onclick="showMessage(0, 'perfect.mp3')">Secret Message 1</button>
-        <div class="message">You're the most amazing person in my life, and I love you more every day. 💖</div>
-
-        <button class="button" onclick="showMessage(1, 'besty.mp3')">Secret Message 2</button>
-        <div class="message">You bring happiness and warmth into my life like no one else ever has. 🌹</div>
-
-        <button class="button" onclick="showMessage(2, '65.mp3')">Secret Message 3</button>
-        <div class="message">I will always be here for you, through every moment, every season, forever. 💞</div>
-
-        <!-- Love Envelope for Final Message -->
-        <div class="envelope" onclick="openEnvelope()">
-            <div class="final-message">Happy Valentine's Day, ìfẹ́ mi! 💌 You are my greatest treasure. 💖</div>
-        </div>
-
-        <!-- Audio Player -->
-        <audio id="audioPlayer"></audio>
+    <div class="music-controls" onclick="toggleMusic()">
+        🎵
     </div>
 
-    <script>
-        function showMessage(index, song) {
-            let messages = document.querySelectorAll(".message");
-            let audio = document.getElementById("audioPlayer");
+    <div class="container">
+        <h1 class="title">To My Precious Ìfẹ́ mí ❤️</h1>
+        
+        <div class="love-card">
+            <div class="love-quote">
+                "In you, I've found the love of my life and my forever valentine."
+            </div>
+            
+            <button class="love-button" onclick="revealPoem()">
+                Begin Our Love Journey <span class="heart-icon">❤️</span>
+            </button>
+            
+            <div class="poem" id="love-poem">
+                Like stars that paint the midnight sky,<br>
+                My love for you soars just as high.<br>
+                In every breath, in every beat,<br>
+                My heart finds rhythm, pure and sweet.<br><br>
+                
+                You're the melody in my soul's song,<br>
+                The place where I completely belong.<br>
+                With you, each moment feels so right,<br>
+                You're my forever, my heart's delight.<br>
+            </div>
+        </div>
 
-            if (messages[index]) {
-                messages[index].classList.add("show");
-                audio.src = song;
-                audio.play();
+        <div class="special-message" id="special-message"></div>
+
+        <div class="final-surprise" id="final-surprise">
+            <h2>My Promise to You</h2>
+            <p>
+                I promise to love you more with each passing day,<br>
+                To be your shelter in every storm,<br>
+                To share in your joys and wipe away your tears,<br>
+                To walk beside you, hand in hand, through all of life's adventures.
+            </p>
+            <button class="love-button" onclick="sealLove()">
+                Seal Our Love <span class="heart-icon">💖</span>
+            </button>
+        </div>
+    </div>
+
+    <audio id="backgroundMusic" loop>
+        <source src="perfect.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="journeyMusic">
+        <source src="65..mp3" type="audio/mpeg">
+    </audio>
+    <audio id="sealMusic">
+        <source src="besty.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const floatingMemories = [
+            { emoji: '💝', message: "You make my heart skip a beat every time I see you" },
+            { emoji: '🌟', message: "Your love lights up my darkest days" },
+            { emoji: '💖', message: "Every moment with you feels like a beautiful dream" },
+            { emoji: '✨', message: "You're the missing piece to my puzzle" },
+            { emoji: '💕', message: "Your smile is my favorite sight in the world" },
+            { emoji: '🌹', message: "My love for you grows deeper with each passing day" },
+            { emoji: '💫', message: "You're the first thing I think about each morning" },
+            { emoji: '🦋', message: "Your love gives me butterflies every day" },
+            { emoji: '🎵', message: "Our love story is my favorite song" },
+            { emoji: '✉️', message: "Every love letter would still be too short to express my feelings" }
+        ];
+
+        let backgroundMusic = document.getElementById('backgroundMusic');
+        let journeyMusic = document.getElementById('journeyMusic');
+        let sealMusic = document.getElementById('sealMusic');
+        let isMusicPlaying = true;
+
+        // Start background music on page load
+        window.addEventListener('load', function() {
+            backgroundMusic.play().catch(e => console.log('Autoplay prevented:', e));
+        });
+
+        function toggleMusic() {
+            if (isMusicPlaying) {
+                backgroundMusic.pause();
+                journeyMusic.pause();
+                sealMusic.pause();
+                isMusicPlaying = false;
+            } else {
+                if (!document.getElementById('love-poem').classList.contains('visible')) {
+                    backgroundMusic.play();
+                } else if (!document.getElementById('final-surprise').classList.contains('visible')) {
+                    journeyMusic.play();
+                } else {
+                    sealMusic.play();
+                }
+                isMusicPlaying = true;
             }
         }
 
-        function openEnvelope() {
-            let envelope = document.querySelector(".envelope");
-            let finalMessage = document.querySelector(".final-message");
+        function createFloatingMemory() {
+            const usedMessages = new Set();
+            const availableMemories = floatingMemories.filter(memory => !usedMessages.has(memory.message));
+            
+            if (availableMemories.length === 0) {
+                usedMessages.clear();
+                return;
+            }
 
-            envelope.classList.add("open");
+            const memory = availableMemories[Math.floor(Math.random() * availableMemories.length)];
+            usedMessages.add(memory.message);
+
+            const element = document.createElement('div');
+            element.className = 'floating-memory';
+            element.innerHTML = memory.emoji;
+            element.style.left = Math.random() * (window.innerWidth - 60) + 'px';
+            element.style.top = Math.random() * (window.innerHeight - 60) + 'px';
+            element.onclick = () => showMessage(memory.message);
+            document.body.appendChild(element);
+
             setTimeout(() => {
-                finalMessage.style.display = "block";
-            }, 1000);
+                element.remove();
+            }, 10000);
         }
-    </script>
 
+        function showMessage(message) {
+            const specialMessage = document.getElementById('special-message');
+            specialMessage.textContent = message;
+            specialMessage.classList.add('visible');
+            setTimeout(() => specialMessage.classList.remove('visible'), 3000);
+        }
+
+        function revealPoem() {
+            const poem = document.getElementById('love-poem');
+            poem.classList.add('visible');
+            
+            if (isMusicPlaying) {
+                backgroundMusic.pause();
+                journeyMusic.play();
+            }
+            
+            setTimeout(() => {
+                const finalSurprise = document.getElementById('final-surprise');
+                finalSurprise.classList.add('visible');
+            }, 2000);
+        }
+
+        function sealLove() {
+            if (isMusicPlaying) {
+                journeyMusic.pause();
+                sealMusic.play();
+            }
+            showMessage("I love you forever, my Ìfẹ́ mí! ❤️");
+        }
+
+        // Create floating memories
+        setInterval(createFloatingMemory, 3000);
+
+        // Handle page visibility change
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                backgroundMusic.pause();
+                journeyMusic.pause();
+                sealMusic.pause();
+            } else if (isMusicPlaying) {
+                if (!document.getElementById('love-poem').classList.contains('visible')) {
+                    backgroundMusic.play();
+                } else if (!document.getElementById('final-surprise').classList.contains('visible')) {
+                    journeyMusic.play();
+                } else {
+                    sealMusic.play();
+                }
+            }
+        });
+    </script>
 </body>
 </html>
