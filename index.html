@@ -3,150 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Valentine's Ìfẹ́ mi ❤️</title>
-
-    <!-- Google Font for a romantic feel -->
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
-
+    <title>Valentine Surprise 💕</title>
     <style>
-        /* Valentine Background */
         body {
-            background: linear-gradient(to right, #ff758c, #ff7eb3);
-            color: white;
-            font-family: 'Dancing Script', cursive;
+            font-family: Arial, sans-serif;
             text-align: center;
-            padding: 50px;
-        }
-
-        /* Valentine's Message */
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
-
-        h2 {
-            font-size: 2rem;
-        }
-
-        /* Heart Animation */
-        .heart {
-            position: fixed;
-            bottom: 0;
-            font-size: 24px;
-            animation: floatUp 5s linear infinite;
-        }
-
-        @keyframes floatUp {
-            from { transform: translateY(0); }
-            to { transform: translateY(-100vh); }
-        }
-
-        /* Surprise Love Letter */
-        .secret {
-            display: none;
-            background: rgba(255, 255, 255, 0.2);
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
             padding: 20px;
-            border-radius: 10px;
-            margin-top: 20px;
-            font-size: 1.5rem;
+            color: white;
         }
-
-        /* Buttons */
-        button {
+        h1 {
+            font-size: 2em;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
             background: white;
-            color: #ff758c;
-            font-size: 1.2rem;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            color: black;
+        }
+        .heart {
+            font-size: 50px;
+            animation: heartbeat 1.5s infinite alternate;
+        }
+        @keyframes heartbeat {
+            from { transform: scale(1); }
+            to { transform: scale(1.2); }
+        }
+        .secret-message {
+            display: none;
             margin-top: 20px;
+            padding: 15px;
+            background: #ffe6e6;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px gray;
+            font-size: 18px;
         }
-
-        button:hover {
-            background: #ffdde1;
-        }
-
-        /* Hide the YouTube iframe */
-        .song {
-            width: 0;
-            height: 0;
+        button {
+            background: red;
+            color: white;
+            padding: 12px 20px;
             border: none;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 5px;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: darkred;
         }
     </style>
 </head>
 <body>
 
-    <!-- Valentine's Message -->
-    <h1>Happy Valentine's Day, Ìfẹ́ mi ❤️</h1>
-    <h2 id="valentineMessage"></h2>
+    <h1>💕 My Special Message for You 💕</h1>
+    <p class="heart">❤️</p>
 
-    <!-- Buttons for Secret Messages -->
-    <p>Click a button below to reveal a secret message and a special song 🎵</p>
-    <button onclick="showSecret(1)">Secret Message 1 💌</button>
-    <button onclick="showSecret(2)">Secret Message 2 💌</button>
+    <div class="container">
+        <p>Click below to reveal a special message and a surprise 🎵</p>
 
-    <!-- Secret Messages -->
-    <div id="secret1" class="secret">
-        <p>Ìfẹ́ mi, you make my world brighter every day. I love you more than words can say. 💖</p>
+        <button onclick="revealMessage('message1', 'music1')">Click for Secret 1</button>
+        <div id="message1" class="secret-message">
+            <p>My love for you is **Perfect**, just like this song 🎶</p>
+        </div>
+        <audio id="music1" src="https://docs.google.com/uc?export=download&id=19pL1ac9RY1KLRxkS3Blz_t8wKlx4ZN7n"></audio>
+
+        <button onclick="revealMessage('message2', 'music2')">Click for Secret 2</button>
+        <div id="message2" class="secret-message">
+            <p>You are my **Besty**, my everything! 💖</p>
+        </div>
+        <audio id="music2" src="https://docs.google.com/uc?export=download&id=19m15zPD888MKyime4_3R9IXTbOcYm3pt"></audio>
+
+        <button onclick="revealMessage('message3', 'music3')">Click for Secret 3</button>
+        <div id="message3" class="secret-message">
+            <p>I've thought about you **65** times today, and I love you more each time! 😘</p>
+        </div>
+        <audio id="music3" src="https://docs.google.com/uc?export=download&id=19l2Jmgued9LvHpcZAkR-TROmpjgMN0Kh"></audio>
     </div>
-    
-    <div id="secret2" class="secret">
-        <p>Ìfẹ́ mi, being with you is the greatest gift. You are my happiness, my peace, and my love. ❤️</p>
-    </div>
 
-    <!-- YouTube Shorts Songs -->
-    <iframe id="song1" class="song" src="https://www.youtube.com/embed/7BspO6r4Eog?autoplay=1&loop=1&playlist=7BspO6r4Eog" frameborder="0"></iframe>
-    <iframe id="song2" class="song" src="https://www.youtube.com/embed/4IVJwJrSa30?loop=1&playlist=4IVJwJrSa30" frameborder="0"></iframe>
-    <iframe id="song3" class="song" src="https://www.youtube.com/embed/wejwGF5bctI?loop=1&playlist=wejwGF5bctI" frameborder="0"></iframe>
-
-    <!-- JavaScript -->
     <script>
-        // Typing Effect for Message
-        const message = "Every day with you is special, but today is extra special because it’s Valentine’s Day! 💖";
-        let i = 0;
-        function typeEffect() {
-            if (i < message.length) {
-                document.getElementById("valentineMessage").innerHTML += message.charAt(i);
-                i++;
-                setTimeout(typeEffect, 100);
-            }
-        }
-        window.onload = typeEffect;
-
-        // Floating Hearts Animation
-        function createHeart() {
-            const heart = document.createElement("div");
-            heart.classList.add("heart");
-            heart.innerText = "❤️";
-            document.body.appendChild(heart);
-
-            heart.style.left = Math.random() * 100 + "vw";
-            heart.style.animationDuration = Math.random() * 2 + 3 + "s";
-
-            setTimeout(() => {
-                heart.remove();
-            }, 5000);
-        }
-        setInterval(createHeart, 300);
-
-        // Show Secret Message and Play Song
-        function showSecret(num) {
-            document.getElementById("secret1").style.display = "none";
-            document.getElementById("secret2").style.display = "none";
-            document.getElementById("secret" + num).style.display = "block";
-
-            // Stop all songs first
-            document.getElementById("song1").src = "";
-            document.getElementById("song2").src = "";
-            document.getElementById("song3").src = "";
-
-            // Play the selected song
-            if (num === 1) {
-                document.getElementById("song2").src = "https://www.youtube.com/embed/4IVJwJrSa30?autoplay=1&loop=1&playlist=4IVJwJrSa30";
-            } else if (num === 2) {
-                document.getElementById("song3").src = "https://www.youtube.com/embed/wejwGF5bctI?autoplay=1&loop=1&playlist=wejwGF5bctI";
-            }
+        function revealMessage(messageId, audioId) {
+            document.getElementById(messageId).style.display = "block";
+            let audio = document.getElementById(audioId);
+            audio.play();
         }
     </script>
 
