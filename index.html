@@ -1,130 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>For My Beautiful Babe 💖</title>
-  <style>
-    body {
-      background: linear-gradient(to right, #ff9a9e, #fad0c4);
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 20px;
-      color: #333;
-    }
-    h1 {
-      color: #e91e63;
-      font-size: 2.5em;
-      margin-bottom: 10px;
-    }
-    p.instruction {
-      font-size: 1.2em;
-      margin-bottom: 20px;
-    }
-    .button {
-      background-color: #e91e63;
-      color: white;
-      border: none;
-      padding: 12px 24px;
-      font-size: 1em;
-      cursor: pointer;
-      border-radius: 5px;
-      margin: 10px;
-      transition: background 0.3s;
-    }
-    .button:hover {
-      background-color: #c2185b;
-    }
-    .secret-message {
-      display: none;
-      margin-top: 20px;
-      padding: 15px;
-      background: #ffe6e6;
-      border-radius: 10px;
-      box-shadow: 0px 0px 10px gray;
-      font-size: 1.2em;
-      color: #d81b60;
-    }
-    /* Final envelope styling */
-    .envelope {
-      width: 250px;
-      height: 250px;
-      background: #fff;
-      border: 3px solid #e91e63;
-      margin: 20px auto;
-      position: relative;
-      /* Using clip-path to create a heart-inspired shape */
-      clip-path: polygon(50% 0%, 61% 20%, 80% 20%, 100% 35%, 100% 55%, 80% 70%, 50% 100%, 20% 70%, 0% 55%, 0% 35%, 20% 20%, 39% 20%);
-      animation: popUp 1s ease-out;
-    }
-    @keyframes popUp {
-      0% { transform: scale(0); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
-    }
-    .envelope p {
-      margin: 0;
-      padding: 20px;
-      font-size: 1.2em;
-      color: #e91e63;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Love ❤️</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ffebee;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+        .message {
+            display: none;
+            font-size: 18px;
+            padding: 15px;
+            margin-top: 10px;
+            background: #ff4081;
+            color: white;
+            border-radius: 10px;
+            transition: all 0.5s ease-in-out;
+        }
+        .message.show {
+            display: block;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .button {
+            display: block;
+            background: #d81b60;
+            color: white;
+            padding: 10px;
+            margin: 10px auto;
+            width: 80%;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .button:hover {
+            background: #ad1457;
+        }
+        /* Envelope animation */
+        .envelope {
+            position: relative;
+            width: 200px;
+            height: 150px;
+            background: pink;
+            margin: 20px auto;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .envelope::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: red;
+            transform: translateY(-100%);
+            transition: transform 1s ease-in-out;
+        }
+        .envelope.open::before {
+            transform: translateY(0);
+        }
+        .final-message {
+            display: none;
+            font-size: 18px;
+            color: white;
+            padding: 15px;
+        }
+    </style>
 </head>
 <body>
-  <h1>For My Beautiful Babe 💕</h1>
-  <p class="instruction">Click a button to reveal a secret message and a special song!</p>
 
-  <!-- Secret Message 1 -->
-  <button class="button" onclick="revealMessage('message1', 'song1')">Reveal Secret 1</button>
-  <p id="message1" class="secret-message">
-    My love for you is <strong>Perfect</strong>, just like this song 🎶
-  </p>
-  
-  <!-- Secret Message 2 -->
-  <button class="button" onclick="revealMessage('message2', 'song2')">Reveal Secret 2</button>
-  <p id="message2" class="secret-message">
-    You are my <strong>Besty</strong>, my everything! 💖
-  </p>
-  
-  <!-- Secret Message 3 -->
-  <button class="button" onclick="revealMessage('message3', 'song3')">Reveal Secret 3</button>
-  <p id="message3" class="secret-message">
-    I've thought about you <strong>65 times</strong> today, and I love you more each time! 😘
-  </p>
-  
-  <!-- Final Envelope (appears after Secret 3 is revealed) -->
-  <div id="finalEnvelope" class="envelope" style="display:none;">
-    <p>You are my forever love! 💌</p>
-  </div>
-  
-  <!-- Audio Elements (Vocaroo embeds) -->
-  <audio id="song1">
-    <source src="https://voca.ro/13KHZvF2pCyG/embed" type="audio/mpeg">
-  </audio>
-  
-  <audio id="song2">
-    <source src="https://voca.ro/1fk3YrASXyvd/embed" type="audio/mpeg">
-  </audio>
-  
-  <audio id="song3">
-    <source src="https://voca.ro/11vBxz6I0Ij8/embed" type="audio/mpeg">
-  </audio>
-  
-  <script>
-    function revealMessage(messageId, songId) {
-      // Reveal the selected secret message
-      document.getElementById(messageId).style.display = "block";
-      // Play the associated song
-      var song = document.getElementById(songId);
-      if (song) {
-        song.play();
-      }
-      // When the third secret is revealed, show the final envelope after a short delay
-      if(messageId === 'message3') {
-        setTimeout(function(){
-          document.getElementById("finalEnvelope").style.display = "block";
-        }, 1000); // 1-second delay
-      }
-    }
-  </script>
+    <div class="container">
+        <h2>For You, My Love ❤️</h2>
+        <p>Click each button to reveal a message.</p>
+
+        <button class="button" onclick="showMessage(0, 'perfect.mp3')">Secret Message 1</button>
+        <div class="message">You're the most amazing person in my life, and I love you more every day. 💖</div>
+
+        <button class="button" onclick="showMessage(1, 'besty.mp3')">Secret Message 2</button>
+        <div class="message">You bring happiness and warmth into my life like no one else ever has. 🌹</div>
+
+        <button class="button" onclick="showMessage(2, '65.mp3')">Secret Message 3</button>
+        <div class="message">I will always be here for you, through every moment, every season, forever. 💞</div>
+
+        <!-- Love Envelope for Final Message -->
+        <div class="envelope" onclick="openEnvelope()">
+            <div class="final-message">Happy Valentine's Day, ìfẹ́ mi! 💌 You are my greatest treasure. 💖</div>
+        </div>
+
+        <!-- Audio Player -->
+        <audio id="audioPlayer"></audio>
+    </div>
+
+    <script>
+        function showMessage(index, song) {
+            let messages = document.querySelectorAll(".message");
+            let audio = document.getElementById("audioPlayer");
+
+            if (messages[index]) {
+                messages[index].classList.add("show");
+                audio.src = song;
+                audio.play();
+            }
+        }
+
+        function openEnvelope() {
+            let envelope = document.querySelector(".envelope");
+            let finalMessage = document.querySelector(".final-message");
+
+            envelope.classList.add("open");
+            setTimeout(() => {
+                finalMessage.style.display = "block";
+            }, 1000);
+        }
+    </script>
+
 </body>
 </html>
